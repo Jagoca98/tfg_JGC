@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<launch>
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_empty_world.launch">
+        <arg name="x_pos" default="2.0"/>
+        <arg name="y_pos" default="1.0"/>
+        <arg name="z_pos" default="0.0"/>
+    </include>
+
+    <include file="$(find turtlebot3_navigation)/launch/move_base.launch">
+        <arg name="no_static_map" value="true"/>
+        <arg name="move_forward_only" default="false"/>
+    </include> 
+
+    <!-- <include file="$(find turtlebot3_navigation)/launch/amcl.launch">
+    </include> -->
+
+    <include file="$(find turtlebot3_slam)/launch/turtlebot3_gmapping.launch">
+    </include>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $/home/bcc/Escritorio/tfg/visualizacion.rviz"/>
+
+    <!-- <include file="$(find fringa_pkg)/launch/explore.launch"/> -->
+    <include file="$(find fringa_pkg)/launch/explore_costmap.launch"/>
+    <!-- <include file="$(find explore_lite)/launch/explore.launch"/> -->
+    <!-- <include file="$(find explore_lite)/launch/explore_costmap.launch"/> -->
+</launch>
